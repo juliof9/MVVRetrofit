@@ -13,22 +13,9 @@ import retrofit2.Response
 
 class GitHubRepoRepository (private val repoDao:GitHubDAO){
 
-    /*fun retrieveReposAsync(user: String): Deferred<Response<List<GitHubRepoRepo>>> =
-        GithubService.getGithubServices().getAllREposPerUser(user)*/
+    fun retrieveReposAsync(user: String): Deferred<Response<List<GitHubRepo>>> =
+        GithubService.getGithubServices().getAllReposPerUSer(user)
 
-    fun retrieveRepos(user: String) =
-        GlobalScope.launch(Dispatchers.IO) {
-        this.@GitHubRepoRepository.nuke()
-
-        val response = GithubService.getGithubServices().getAllReposPerUSer(user).await()
-
-        if(response.isSuccessful) with(response){
-            this.body()?.forEach(){
-                this@GitHubRepoRepository.insert(it)
-            }
-        }
-
-    }
 
     @WorkerThread
     suspend fun insert(repo:GitHubRepo){

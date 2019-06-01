@@ -1,7 +1,6 @@
 package com.petrl14.mvvm.services.retrofit
 
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
-import com.petrl14.mvvm.database.entities.GitHubRepo
 import com.petrlr14.mvvm.database.entities.GitHubRepo
 import kotlinx.coroutines.Deferred
 import retrofit2.Response
